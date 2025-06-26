@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
@@ -39,7 +38,6 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Platform', path: '/platform' },
     { name: 'Training', path: '/training' },
     { name: 'Services', path: '/services' },
-    { name: 'Pricing', path: '/pricing' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -217,8 +215,8 @@ const Layout = ({ children }: LayoutProps) => {
               © 2024 ActReady. All rights reserved.
             </p>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
-              <a href="mailto:info@actready.eu" className="text-gray-400 hover:text-[#FF5C30] transition-colors text-sm">
-                info@actready.eu
+              <a href="mailto:hello@act-ready.eu" className="text-gray-400 hover:text-[#FF5C30] transition-colors text-sm">
+                hello@act-ready.eu
               </a>
               <a href="tel:+32471600750" className="text-gray-400 hover:text-[#FF5C30] transition-colors text-sm">
                 +32 471 60 07 50

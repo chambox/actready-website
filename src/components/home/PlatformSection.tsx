@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, FileCheck, BarChart3, Lock, CheckCircle } from 'lucide-react';
@@ -64,7 +63,7 @@ const PlatformSection = ({ isVisible, counters }: PlatformSectionProps) => {
         
         <div className="text-center">
           <Link
-            to="/platform"
+            to="/contact"
             className="bg-[#FF5C30] hover:bg-[#FF5C30]/90 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center"
           >
             Join the Beta Wait-list

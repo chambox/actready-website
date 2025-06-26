@@ -32,44 +32,82 @@ const Services = () => {
   const engagementWeeks = [
     {
       week: 1,
-      theme: 'Kick-off & Intake',
-      activities: '1-hr stakeholder kick-off, collect AI use-case docs.',
-      deliverables: 'Project brief & requirements matrix.',
+      theme: 'Kick-off & in-take interviews',
+      subtitle: 'Kick-off & Intake (1h session)',
+      activities: [
+        'Kick-off session',
+        'AI use case documentation',
+        'Business stakeholder interviews',
+        'Technical stakeholder interviews'
+      ],
+      deliverables: 'Project brief & requirements matrix',
+      focus: 'Kick-off & in-take interviews',
       icon: Calendar
     },
     {
       week: 2,
-      theme: 'Culture of Responsible AI',
-      activities: 'Workshops with business & technical owners.',
-      deliverables: 'Draft AI principles + policy gap list.',
+      theme: 'Culture of responsible AI',
+      subtitle: 'Culture of Responsible AI (2h workshop)',
+      activities: [
+        'Business stakeholder(s) workshop',
+        'Technical stakeholders workshop',
+        'AI principles workshop',
+        'List of AI policies development'
+      ],
+      deliverables: 'Draft AI principles + policy gap list',
+      focus: 'Culture of responsible AI',
       icon: Users
     },
     {
       week: 3,
-      theme: 'Risk Management',
-      activities: '2-hr risk workshop, employee micro-training.',
-      deliverables: 'Risk register & mitigation plan.',
+      theme: 'Risk management',
+      subtitle: 'Risk Management (2h workshop + 1h training)',
+      activities: [
+        'AI principles workshop',
+        'List of AI policies',
+        'Employee training(s)'
+      ],
+      deliverables: 'Risk register & mitigation plan',
+      focus: 'Risk management',
       icon: Target
     },
     {
       week: 4,
-      theme: 'Deep-Dive Risk Analysis',
-      activities: 'Threat analysis on priority projects, best-practice checklist.',
-      deliverables: 'Risk report & recommendations.',
+      theme: 'Responsibilities',
+      subtitle: 'Deep-Dive Risk Analysis (Project-based)',
+      activities: [
+        'AI risk analysis (AI project(s))',
+        'Best practices & recommendations',
+        'Threat analysis on priority projects'
+      ],
+      deliverables: 'Risk report & recommendations',
+      focus: 'Responsibilities',
       icon: Shield
     },
     {
       week: 5,
-      theme: 'Governance & Responsibility',
-      activities: '2-hr governance session, RACI modelling.',
-      deliverables: 'Governance charter & process map.',
+      theme: 'Up-skill workforce',
+      subtitle: 'AI Governance (2h workshop)',
+      activities: [
+        'AI governance workshop',
+        'Processes & responsibilities',
+        'RACI modelling session'
+      ],
+      deliverables: 'Governance charter & process map',
+      focus: 'Up-skill workforce',
       icon: FileText
     },
     {
       week: 6,
-      theme: 'Up-skill Workforce',
-      activities: '3-hr advanced risk training, CAICO certification prep.',
-      deliverables: 'Certified team & roadmap for continuous compliance.',
+      theme: 'Up-skill workforce',
+      subtitle: 'Risk Up-skilling & Certification (3h workshop)',
+      activities: [
+        'Risk up-skilling training(s)',
+        'CAICO training',
+        'Advanced risk assessment training'
+      ],
+      deliverables: 'Certified team & roadmap for continuous compliance',
+      focus: 'Up-skill workforce',
       icon: Award
     }
   ];
@@ -202,7 +240,7 @@ const Services = () => {
                           "font-semibold mb-2 text-sm transition-colors duration-300",
                           activeWeek === index ? "text-[#FF5C30]" : "text-white"
                         )}>
-                          {week.theme}
+                          {week.subtitle}
                         </h3>
                       </div>
                     </div>
@@ -218,7 +256,7 @@ const Services = () => {
                   })}
                   <div>
                     <h3 className="text-2xl font-bold text-[#FF5C30]">
-                      Week {engagementWeeks[activeWeek].week}: {engagementWeeks[activeWeek].theme}
+                      Week {engagementWeeks[activeWeek].week}: {engagementWeeks[activeWeek].subtitle}
                     </h3>
                   </div>
                 </div>
@@ -226,7 +264,14 @@ const Services = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-white">Key Activities</h4>
-                    <p className="text-gray-300">{engagementWeeks[activeWeek].activities}</p>
+                    <ul className="text-gray-300 space-y-2">
+                      {engagementWeeks[activeWeek].activities.map((activity, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="text-[#FF5C30] mr-2">•</span>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-white">Deliverables</h4>
@@ -245,14 +290,21 @@ const Services = () => {
                       {week.week}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-[#FF5C30]">{week.theme}</h3>
+                      <h3 className="text-lg font-semibold text-[#FF5C30]">{week.subtitle}</h3>
                     </div>
                   </div>
                   
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-medium text-white mb-2">Activities:</h4>
-                      <p className="text-gray-300 text-sm">{week.activities}</p>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        {week.activities.map((activity, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="text-[#FF5C30] mr-2">•</span>
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div>
                       <h4 className="font-medium text-white mb-2">Deliverables:</h4>
@@ -332,7 +384,7 @@ const Services = () => {
             </div>
             
             <div className="mt-8 bg-gray-900/50 border border-gray-700 rounded-2xl p-8 text-center">
-              <h3 className="text-xl font-semibold mb-4 text-[#FF5C30]">Bonus: Early Access to ™</h3>
+              <h3 className="text-xl font-semibold mb-4 text-[#FF5C30]">Bonus: Early Access to ActReady™</h3>
               <p className="text-gray-300">
                 All engagement clients receive priority access to our SaaS platform when it launches, plus exclusive lifetime discount pricing.
               </p>

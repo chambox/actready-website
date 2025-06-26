@@ -36,8 +36,9 @@ const TrainingMandateSection = ({ isVisible, counters }: TrainingMandateSectionP
             </h2>
             
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              The EU AI Act doesn't care if you build or buy AI. If you deploy it, your workforce must demonstrate "sufficient AI literacy" or face fines up to <span className="text-red-400 font-bold">€{counters.literacy}M</span>.
-            </p>
+            Build or buy—if you deploy AI, staff need “sufficient AI literacy.” Duty starts 2 Feb 2025; regulators can fine up to <span className="text-red-400 font-bold">€{counters.literacy}M</span> from 3 Aug 2026.
+      </p>
+
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">

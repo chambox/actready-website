@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,25 +16,55 @@ const Contact = () => {
     interest: 'platform'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        role: '',
-        message: '',
-        interest: 'platform'
-      });
-    }, 3000);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      // EmailJS configuration - You'll need to replace these with your actual values
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_your_id';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_your_id';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        role: formData.role,
+        interest: services.find(s => s.value === formData.interest)?.label || formData.interest,
+        message: formData.message,
+        to_email: 'hello@act-ready.eu'
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setIsSubmitted(true);
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          role: '',
+          message: '',
+          interest: 'platform'
+        });
+      }, 5000);
+
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setError('Sorry, there was an error sending your message. Please try again or contact us directly at hello@act-ready.eu');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -47,8 +78,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      details: 'info@ai-compliance-co.com',
-      action: 'mailto:info@ai-compliance-co.com'
+      details: 'hello@act-ready.eu',
+      action: 'mailto:hello@act-ready.eu'
     },
     {
       icon: Phone,
@@ -110,11 +141,20 @@ const Contact = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {error && (
+                    <div className="mb-6 p-4 bg-red-900/20 border border-red-500/20 rounded-lg">
+                      <div className="flex items-start">
+                        <AlertCircle className="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <p className="text-red-300 text-sm">{error}</p>
+                      </div>
+                    </div>
+                  )}
+                  
                   {isSubmitted ? (
                     <div className="text-center py-8">
                       <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                       <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
-                      <p className="text-gray-300">Thank you for contacting us. We'll be in touch soon.</p>
+                      <p className="text-gray-300">Thank you for contacting us. We'll be in touch within 24 hours.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -206,10 +246,20 @@ const Contact = () => {
                       
                       <Button
                         type="submit"
-                        className="w-full bg-[#FF5C30] hover:bg-[#FF5C30]/90 text-white py-3"
+                        disabled={isLoading}
+                        className="w-full bg-[#FF5C30] hover:bg-[#FF5C30]/90 text-white py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        {isLoading ? (
+                          <>
+                            <div className="w-4 h-4 mr-2 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4 mr-2" />
+                            Send Message
+                          </>
+                        )}
                       </Button>
                     </form>
                   )}
