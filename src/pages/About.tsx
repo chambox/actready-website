@@ -37,11 +37,11 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: 'John Doe',
+      name: 'Chamberlain Mbah',
       role: 'CEO & Founder',
-      bio: 'Leading ActReady with 15+ years of experience in AI and regulatory compliance.',
+      bio: 'Leading ActReady with 8+ years of experience in AI and regulatory compliance.',
       image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400',
-      linkedin: '#'
+      linkedin: 'https://www.linkedin.com/in/chamberlain-mbah/'
     },
     {
       name: 'Jane Smith',
