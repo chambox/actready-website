@@ -1,3 +1,68 @@
+# ActReady Frontend
+
+A modern React application built with Vite, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Modern React 18 with TypeScript
+- Vite for fast development and building
+- Tailwind CSS for styling
+- Shadcn/ui components
+- React Router for navigation
+- Responsive design
+- EmailJS integration for contact forms
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd actready-frontend
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Create a `.env.local` file with your EmailJS credentials:
+```bash
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+4. Start the development server
+```bash
+npm run dev
+```
+
+## Building for Production
+
+```bash
+npm run build
+```
+
+## Deployment
+
+This project is configured for deployment to Azure Static Web Apps.
+
+## Environment Variables
+
+Make sure to configure the following environment variables in your deployment environment:
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
+
+<!-- Trigger redeployment for environment variables -->
+
 # Welcome to your Lovable project
 
 ## Project info
