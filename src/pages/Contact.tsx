@@ -128,6 +128,19 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-[#0B0E16] text-white">
+      {/* Debug Section - Remove this after testing */}
+      <div className="bg-red-900/20 border border-red-500/20 p-4 m-4 rounded-lg">
+        <h3 className="text-red-300 font-bold mb-2">DEBUG - Environment Variables:</h3>
+        <pre className="text-xs text-red-200">
+          SERVICE_ID: {import.meta.env.VITE_EMAILJS_SERVICE_ID || 'undefined'}{'\n'}
+          TEMPLATE_ID: {import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'undefined'}{'\n'}
+          PUBLIC_KEY: {import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'undefined'}{'\n'}
+          MODE: {import.meta.env.MODE}{'\n'}
+          DEV: {import.meta.env.DEV ? 'true' : 'false'}{'\n'}
+          PROD: {import.meta.env.PROD ? 'true' : 'false'}
+        </pre>
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FF5C30]/10 to-transparent"></div>
