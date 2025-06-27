@@ -35,10 +35,10 @@ const Contact = () => {
     setError('');
 
     try {
-      // EmailJS configuration - You'll need to replace these with your actual values
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_your_id';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_your_id';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+      // Temporary hardcoded values - will fix environment variables after testing
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_mklvnzf';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_f5ar1s9';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'NYXfHwX9PdWmHkUtr';
 
       // Debug log the actual values being used
       console.log('=== EMAILJS VALUES BEING USED ===');
