@@ -19,6 +19,16 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Debug environment variables
+  React.useEffect(() => {
+    console.log('=== ENVIRONMENT VARIABLES DEBUG ===');
+    console.log('VITE_EMAILJS_SERVICE_ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log('VITE_EMAILJS_TEMPLATE_ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log('VITE_EMAILJS_PUBLIC_KEY:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    console.log('All import.meta.env:', import.meta.env);
+    console.log('===================================');
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -29,6 +39,13 @@ const Contact = () => {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_your_id';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_your_id';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+
+      // Debug log the actual values being used
+      console.log('=== EMAILJS VALUES BEING USED ===');
+      console.log('serviceId:', serviceId);
+      console.log('templateId:', templateId);
+      console.log('publicKey:', publicKey);
+      console.log('================================');
 
       // Prepare template parameters
       const templateParams = {
