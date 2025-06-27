@@ -29,66 +29,70 @@ const About = () => {
   }, []);
 
   const stats = [
-    { number: '500+', label: 'Professionals Trained' },
-    { number: '50+', label: 'Companies Served' },
-    { number: '96%', label: 'Satisfaction Rate' },
-    { number: '€2.5M', label: 'Compliance Risks Mitigated' }
+    { number: '4', label: 'Co-Founders' },
+    { number: '100%', label: 'AI-Focused' },
+    { number: '24/7', label: 'Regulatory Monitoring' },
+    { number: '2024', label: 'Founded' }
   ];
 
   const teamMembers = [
     {
-      name: 'Chamberlain Mbah',
-      role: 'CEO & Founder',
-      bio: 'Leading ActReady with 8+ years of experience in AI and regulatory compliance.',
-      image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400',
+      name: 'Cyril Tata',
+      role: 'Co-Founder & Technical Lead',
+      bio: 'Passionate about building robust AI solutions with a focus on compliance, security, and scalable architecture.',
+      image: '/cyril_image.png',
+      linkedin: 'https://www.linkedin.com/in/cyriltata/'
+    },
+    {
+      name: 'Tianga Dieudonne',
+      role: 'Co-Founder & Compliance Expert',
+      bio: 'Specializing in regulatory frameworks and ensuring AI systems meet the highest standards of compliance and ethics.',
+      image: '/dieu_image.png',
+      linkedin: 'https://www.linkedin.com/in/tianga-dieudonne/'
+    },
+    {
+      name: 'Mircea Anton',
+      role: 'Co-Founder & Strategy Advisor',  
+      bio: 'Driving strategic initiatives and business development with extensive experience in technology consulting and digital transformation.',
+      image: '/mircea_image.png',
+      linkedin: 'https://www.linkedin.com/in/mircea-anton-469b8b21/'
+    },
+    {
+      name: 'Dr. Chamberlain Mbah',
+      role: 'Co-Founder & AI Specialist',
+      bio: 'Bringing deep expertise in AI systems and regulatory compliance to help organizations navigate the complex landscape of AI governance.',
+      image: '/chamberlain_image.png',
       linkedin: 'https://www.linkedin.com/in/chamberlain-mbah/'
-    },
-    {
-      name: 'Jane Smith',
-      role: 'CTO',
-      bio: 'Driving our technical vision with deep expertise in AI systems and enterprise architecture.',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Mike Johnson',
-      role: 'COO',
-      bio: 'Scaling our operations and ensuring seamless delivery of compliance solutions worldwide.',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400',
-      linkedin: '#'
     }
   ];
 
-  const testimonials = [
+  const whyChooseUs = [
     {
-      quote: "ActReady's pilot saved us three months on our audit. Their expertise in AI regulations is unmatched.",
-      author: "Sarah Chen",
-      title: "Director of Compliance",
-      company: "FinTech Scale-Up"
+      title: "AI-First Approach",
+      description: "Unlike generic compliance consultants, we specialize exclusively in AI regulations and understand the unique challenges of AI systems.",
+      icon: "🤖"
     },
     {
-      quote: "The training program transformed how our team approaches AI development. Now compliance is built into our workflow.",
-      author: "Michael Rodriguez",
-      title: "Head of AI",
-      company: "HealthAI Solutions"
+      title: "Practical Experience",
+      description: "Our team combines deep technical knowledge with hands-on experience in building and deploying AI systems in regulated environments.",
+      icon: "⚡"
     },
     {
-      quote: "Their 6-week engagement gave us a complete compliance framework. We went from zero to audit-ready.",
-      author: "Dr. Emily Watson",
-      title: "CTO",
-      company: "RetailPro AI"
+      title: "Future-Ready Solutions",
+      description: "We stay ahead of evolving regulations like the EU AI Act, ensuring your compliance strategy adapts to new requirements.",
+      icon: "🚀"
     }
   ];
 
-  const clientLogos = [
-    'FinTech-X',
-    'HealthAI',
-    'RetailPro',
-    'GovCloud',
-    'AutonoTech',
-    'DataFlow',
-    'SecureAI',
-    'TechCorp'
+  const industries = [
+    'FinTech',
+    'Healthcare',
+    'Retail',
+    'Government',
+    'Automotive',
+    'Manufacturing',
+    'Energy',
+    'Education'
   ];
 
   const values = [
@@ -167,11 +171,11 @@ const About = () => {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-300">
-              The leaders driving ActReady's mission to make AI compliance accessible for everyone.
+              Our passionate team of co-founders working together to make AI compliance accessible and actionable for organizations worldwide.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
               <div 
                 key={member.name}
@@ -263,68 +267,64 @@ const About = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Why Choose Us */}
       <section 
-        data-section="testimonials"
+        data-section="why-choose-us"
         className={cn(
           "py-20 transition-all duration-1000",
-          visibleSections.has('testimonials') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          visibleSections.has('why-choose-us') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              What Our Clients Say
+              Why Choose ActReady
             </h2>
             <p className="text-xl text-gray-300">
-              Real feedback from organizations we've helped achieve AI compliance.
+              What sets us apart in the AI compliance landscape.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {whyChooseUs.map((item, index) => (
               <div 
                 key={index}
-                className="bg-gray-900/50 border border-gray-700 rounded-2xl p-8 hover:border-[#FF5C30]/50 transition-all duration-300"
+                className="bg-gray-900/50 border border-gray-700 rounded-2xl p-8 text-center hover:border-[#FF5C30]/50 transition-all duration-300"
               >
-                <Quote className="w-8 h-8 text-[#FF5C30] mb-4" />
-                <p className="text-gray-300 mb-6 italic">"{testimonial.quote}"</p>
-                <div className="border-t border-gray-700 pt-4">
-                  <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-sm text-gray-400">{testimonial.title}</div>
-                  <div className="text-sm text-[#FF5C30]">{testimonial.company}</div>
-                </div>
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Client Logos */}
+      {/* Industries We Serve */}
       <section 
-        data-section="clients"
+        data-section="industries"
         className={cn(
           "py-20 bg-gradient-to-b from-[#FF5C30]/5 to-transparent transition-all duration-1000",
-          visibleSections.has('clients') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          visibleSections.has('industries') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Trusted by Industry Leaders
+              Industries We Serve
             </h2>
             <p className="text-xl text-gray-300">
-              Organizations of all sizes trust us with their AI compliance.
+              AI compliance expertise across diverse sectors and use cases.
             </p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {clientLogos.map((logo, index) => (
+            {industries.map((industry, index) => (
               <div 
                 key={index}
                 className="bg-gray-900/50 border border-gray-700 rounded-lg p-6 text-center hover:border-[#FF5C30]/50 transition-all duration-300"
               >
-                <div className="text-gray-300 font-medium">{logo}</div>
+                <div className="text-gray-300 font-medium">{industry}</div>
               </div>
             ))}
           </div>
