@@ -19,15 +19,7 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Debug environment variables
-  React.useEffect(() => {
-    console.log('=== ENVIRONMENT VARIABLES DEBUG ===');
-    console.log('VITE_EMAILJS_SERVICE_ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
-    console.log('VITE_EMAILJS_TEMPLATE_ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-    console.log('VITE_EMAILJS_PUBLIC_KEY:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-    console.log('All import.meta.env:', import.meta.env);
-    console.log('===================================');
-  }, []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,17 +27,20 @@ const Contact = () => {
     setError('');
 
     try {
-      // Temporary hardcoded values - will fix environment variables after testing
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_mklvnzf';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_f5ar1s9';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'NYXfHwX9PdWmHkUtr';
+      // EmailJS configuration from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      // Debug log the actual values being used
-      console.log('=== EMAILJS VALUES BEING USED ===');
-      console.log('serviceId:', serviceId);
-      console.log('templateId:', templateId);
-      console.log('publicKey:', publicKey);
-      console.log('================================');
+      // Check if environment variables are configured
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS environment variables are not configured');
+        setError('Contact form is not properly configured. Please try again later or contact us directly at hello@act-ready.eu');
+        setIsLoading(false);
+        return;
+      }
+
+
 
       // Prepare template parameters
       const templateParams = {
@@ -128,18 +123,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-[#0B0E16] text-white">
-      {/* Debug Section - Remove this after testing */}
-      <div className="bg-red-900/20 border border-red-500/20 p-4 m-4 rounded-lg">
-        <h3 className="text-red-300 font-bold mb-2">DEBUG - Environment Variables:</h3>
-        <pre className="text-xs text-red-200">
-          SERVICE_ID: {import.meta.env.VITE_EMAILJS_SERVICE_ID || 'undefined'}{'\n'}
-          TEMPLATE_ID: {import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'undefined'}{'\n'}
-          PUBLIC_KEY: {import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'undefined'}{'\n'}
-          MODE: {import.meta.env.MODE}{'\n'}
-          DEV: {import.meta.env.DEV ? 'true' : 'false'}{'\n'}
-          PROD: {import.meta.env.PROD ? 'true' : 'false'}
-        </pre>
-      </div>
+
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">
